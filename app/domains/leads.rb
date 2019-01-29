@@ -13,10 +13,10 @@ module Domains
       @leads.each do |lead|
         res = LeadSchema.call(lead)
         if res.success?
-          begin
-            klass = "Domains::Epids::#{lead[:lead][:category].classify}".constantize
-            p klass.new(lead[:lead]).output
-          rescue
+          # of course, here we should find the right class
+          if 'gartenbauorg' == lead[:lead][:category]
+            @res = Domains::Epids::Gartenbauorg.new(lead[:lead]).output
+            p @res
           end
         else
           @errors << res.errors
