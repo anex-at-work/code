@@ -18,7 +18,7 @@ LeadSchema = Dry::Validation.Schema do
     required(:created_at).filled
     required(:updated_at).filled
     required(:order_type).maybe(:str?)
-    required(:comment).filled
+    required(:comment).maybe(:str?)
     required(:uid).filled
     required(:user_type).maybe(:str?)
     required(:request_type).maybe(:str?)
@@ -26,8 +26,6 @@ LeadSchema = Dry::Validation.Schema do
     required(:rejected_at).maybe(:str?)
     required(:partner_id).maybe(:int?)
     required(:lost_reason).maybe(:str?)
-    required(:partner_ids).filled
-    required(:pics).filled
     required(:user_picked_account_id).maybe(:int?)
     required(:service_performed).maybe(:str?)
     required(:cipid).maybe(:int?)
